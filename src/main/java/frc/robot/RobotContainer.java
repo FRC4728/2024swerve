@@ -39,22 +39,23 @@ public class RobotContainer {
 
     /* Driver Buttons */
     private final JoystickButton runIndex = new JoystickButton(driver,1); //A
-    private final JoystickButton runIndexFWD = new JoystickButton(operator,2); //B
-    private final JoystickButton runIndexREV = new JoystickButton(operator,4); //X
-    private final JoystickButton ShootREV = new JoystickButton(driver, 4); //Y
     private final JoystickButton shootSpeaker = new JoystickButton(driver,2); //LB
     private final JoystickButton shootAmp = new JoystickButton(driver,3); //RB
-    private final JoystickButton robotCentric = new JoystickButton(driver,7); //Back
-    private final JoystickButton zeroGyro = new JoystickButton(driver,8); //Start
-    private final JoystickButton shoulderButtonRight = new JoystickButton(driver,6);
-    private final JoystickButton shoulderButtonLeft = new JoystickButton(driver,5);
-
-
+    private final JoystickButton ShootREV = new JoystickButton(driver, 4); //Y
+    private final JoystickButton swerveLowSpeed = new JoystickButton(driver,5); //Shoulder Left
+    private final JoystickButton swerveHighSpeed = new JoystickButton(driver,6);
+    private final JoystickButton robotCentric = new JoystickButton(driver,7); //Start
+    private final JoystickButton zeroGyro = new JoystickButton(driver,8); //Back
+    
     /* Operator Controls */
     private final int climberRight = 1;
     private final int climberLeft = 5;
 
-    /*Swerve Speed Controls */
+    /* Operator Buttons */
+    private final JoystickButton runIndexFWD = new JoystickButton(operator,2); //B
+    private final JoystickButton runIndexREV = new JoystickButton(operator,4); //X
+
+    /*Swerve Speed Variables */
     private double speedValtrans = 1;
     private double speedValstraf = 1;
     private double speedValrotat = 1;
@@ -76,7 +77,7 @@ public class RobotContainer {
                 () -> -driver.getRawAxis(translationAxis)*speedValtrans, 
                 () -> -driver.getRawAxis(strafeAxis)*speedValstraf, 
                 () -> -driver.getRawAxis(rotationAxis)*speedValrotat, 
-                () -> robotCentric.getAsBoolean()
+                () -> zeroGyro.getAsBoolean()
 
             )
         );
@@ -114,7 +115,7 @@ public class RobotContainer {
      */
     private void configureButtonBindings() {
         /* Driver Buttons */
-        zeroGyro.onTrue(new InstantCommand(() -> s_Swerve.zeroHeading()));
+        robotCentric.onTrue(new InstantCommand(() -> s_Swerve.zeroHeading()));
 
         /*Create binding for shooting speaker */
         shootSpeaker.whileTrue(new ShootSpeaker(s_Shooter, s_Indexer,Constants.ShooterConstants.combined_shooterVelo,Constants.IndexerConstants.indexVelo));
@@ -140,13 +141,13 @@ public class RobotContainer {
 
         /*Create binding for swerve speed */
         
-        shoulderButtonRight.whileTrue(new InstantCommand(() -> speedValstraf = 1));
-        shoulderButtonRight.whileTrue(new InstantCommand(() -> speedValtrans = 1));
-        shoulderButtonRight.whileTrue(new InstantCommand(() -> speedValrotat = .5));
+        swerveHighSpeed.whileTrue(new InstantCommand(() -> speedValstraf = 1));
+        swerveHighSpeed.whileTrue(new InstantCommand(() -> speedValtrans = 1));
+        swerveHighSpeed.whileTrue(new InstantCommand(() -> speedValrotat = .5));
 
-        shoulderButtonLeft.whileTrue(new InstantCommand(() -> speedValstraf = .5));
-        shoulderButtonLeft.whileTrue(new InstantCommand(() -> speedValtrans = .5));
-        shoulderButtonLeft.whileTrue(new InstantCommand(() -> speedValrotat = .5));
+        swerveLowSpeed.whileTrue(new InstantCommand(() -> speedValstraf = .5));
+        swerveLowSpeed.whileTrue(new InstantCommand(() -> speedValtrans = .5));
+        swerveLowSpeed.whileTrue(new InstantCommand(() -> speedValrotat = .5));
       
     }
 
