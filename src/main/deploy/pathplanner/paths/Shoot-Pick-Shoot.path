@@ -1,0 +1,143 @@
+{
+  "version": 1.0,
+  "waypoints": [
+    {
+      "anchor": {
+        "x": 0.7805585557503859,
+        "y": 6.858213644870939
+      },
+      "prevControl": null,
+      "nextControl": {
+        "x": 1.864428949973955,
+        "y": 6.979658581281076
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 2.894982565999367,
+        "y": 6.979658581285779
+      },
+      "prevControl": {
+        "x": 2.8920823532367437,
+        "y": 6.956725296167336
+      },
+      "nextControl": {
+        "x": 2.8978827787619905,
+        "y": 7.002591866404223
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 0.7805585557503859,
+        "y": 6.858213644870939
+      },
+      "prevControl": {
+        "x": 1.876139786519737,
+        "y": 6.967947744735294
+      },
+      "nextControl": null,
+      "isLocked": false,
+      "linkedName": null
+    }
+  ],
+  "rotationTargets": [
+    {
+      "waypointRelativePos": 1,
+      "rotationDegrees": 0,
+      "rotateFast": true
+    }
+  ],
+  "constraintZones": [],
+  "eventMarkers": [
+    {
+      "name": "Shoot 1st Note",
+      "waypointRelativePos": 0.0,
+      "command": {
+        "type": "sequential",
+        "data": {
+          "commands": [
+            {
+              "type": "named",
+              "data": {
+                "name": "ShootSpeaker"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Pick Up Note",
+      "waypointRelativePos": 0.6,
+      "command": {
+        "type": "sequential",
+        "data": {
+          "commands": [
+            {
+              "type": "named",
+              "data": {
+                "name": "RunIndex"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Stop Index",
+      "waypointRelativePos": 1.15,
+      "command": {
+        "type": "parallel",
+        "data": {
+          "commands": [
+            {
+              "type": "named",
+              "data": {
+                "name": "StopIndex"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Shoot 2nd Note",
+      "waypointRelativePos": 2.0,
+      "command": {
+        "type": "sequential",
+        "data": {
+          "commands": [
+            {
+              "type": "named",
+              "data": {
+                "name": "ShootSpeaker"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "globalConstraints": {
+    "maxVelocity": 1.0,
+    "maxAcceleration": 3.0,
+    "maxAngularVelocity": 540.0,
+    "maxAngularAcceleration": 720.0
+  },
+  "goalEndState": {
+    "velocity": 0,
+    "rotation": 59.0362434679265,
+    "rotateFast": false
+  },
+  "reversed": false,
+  "folder": null,
+  "previewStartingState": {
+    "rotation": 59.4386875980946,
+    "velocity": 0
+  },
+  "useDefaultConstraints": false
+}
