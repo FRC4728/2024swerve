@@ -55,11 +55,6 @@ public class RobotContainer {
     private final JoystickButton runIndexFWD = new JoystickButton(operator,2); //B
     private final JoystickButton runIndexREV = new JoystickButton(operator,4); //X
 
-    /*Swerve Speed Variables */
-    private double speedValtrans = 1;
-    private double speedValstraf = 1;
-    private double speedValrotat = 1;
-
     /* Subsystems */
     private final Swerve s_Swerve = new Swerve();
     private final Shooter s_Shooter = new Shooter();
@@ -74,9 +69,9 @@ public class RobotContainer {
         s_Swerve.setDefaultCommand(
             new TeleopSwerve(
                 s_Swerve, 
-                () -> -driver.getRawAxis(translationAxis)*speedValtrans, 
-                () -> -driver.getRawAxis(strafeAxis)*speedValstraf, 
-                () -> -driver.getRawAxis(rotationAxis)*speedValrotat, 
+                () -> -driver.getRawAxis(translationAxis)*translationMultiplier, 
+                () -> -driver.getRawAxis(strafeAxis)*strafeMultiplier, 
+                () -> -driver.getRawAxis(rotationAxis)*rotateMultiplier, 
                 () -> zeroGyro.getAsBoolean()
 
             )
@@ -141,13 +136,13 @@ public class RobotContainer {
 
         /*Create binding for swerve speed */
         
-        swerveHighSpeed.whileTrue(new InstantCommand(() -> speedValstraf = 1));
-        swerveHighSpeed.whileTrue(new InstantCommand(() -> speedValtrans = 1));
-        swerveHighSpeed.whileTrue(new InstantCommand(() -> speedValrotat = .5));
+        swerveHighSpeed.whileTrue(new InstantCommand(() -> Contstants.speedMultiplierConstants.HStranslationMultiplier));
+        swerveHighSpeed.whileTrue(new InstantCommand(() -> Contstants.speedMultiplierConstants.HSstrafeMultiplier));
+        swerveHighSpeed.whileTrue(new InstantCommand(() -> Contstants.speedMultiplierConstants.HSrotationMultiplier));
 
-        swerveLowSpeed.whileTrue(new InstantCommand(() -> speedValstraf = .5));
-        swerveLowSpeed.whileTrue(new InstantCommand(() -> speedValtrans = .5));
-        swerveLowSpeed.whileTrue(new InstantCommand(() -> speedValrotat = .5));
+        swerveLowSpeed.whileTrue(new InstantCommand(() -> Contstants.speedMultiplierConstants.LStranslationMultiplier));
+        swerveLowSpeed.whileTrue(new InstantCommand(() -> Contstants.speedMultiplierConstants.LSstrafeMultiplier));
+        swerveLowSpeed.whileTrue(new InstantCommand(() -> Contstants.speedMultiplierConstants.LSrotationMultiplier));
       
     }
 
