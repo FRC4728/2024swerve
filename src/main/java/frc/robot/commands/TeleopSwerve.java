@@ -28,11 +28,7 @@ public class TeleopSwerve extends Command {
         this.robotCentricSup = robotCentricSup;
     }
 
-    //public TeleopSwerve(Swerve s_Swerve, DoubleSupplier translationSup, DoubleSupplier strafeSup, DoubleSupplier rotationSup, BooleanSupplier robotCentricSup) {
-     //   this(s_Swerve, translationSup, strafeSup, rotationSup, robotCentricSup, 1.0);
-    //}
-
-    @Override
+       @Override
     public void execute() {
         /* Get Values, Deadband*/
         double translationVal = MathUtil.applyDeadband(translationSup.getAsDouble(), Constants.stickDeadband); 

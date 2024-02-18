@@ -49,10 +49,6 @@ public class RobotContainer {
     private final JoystickButton shoulderButtonRight = new JoystickButton(driver,6);
     private final JoystickButton shoulderButtonLeft = new JoystickButton(driver,5);
 
-    //private final POVButton shoulderButtonRight = new POVButton(driver, 0);
-    //private final POVButton shoulderButtonLeft = new POVButton(driver, 180);
-
-
 
     /* Operator Controls */
     private final int climberRight = 1;
@@ -151,34 +147,7 @@ public class RobotContainer {
         shoulderButtonLeft.whileTrue(new InstantCommand(() -> speedValstraf = .5));
         shoulderButtonLeft.whileTrue(new InstantCommand(() -> speedValtrans = .5));
         shoulderButtonLeft.whileTrue(new InstantCommand(() -> speedValrotat = .5));
-
-        
-
-    
-        /*shoulderButtonRight.onTrue(new InstantCommand(() -> {
-            s_Swerve.setDefaultCommand(
-                new TeleopSwerve(
-                    s_Swerve, 
-                    () -> -driver.getRawAxis(translationAxis)*1, 
-                    () -> -driver.getRawAxis(strafeAxis)*1, 
-                    () -> -driver.getRawAxis(rotationAxis)*1, 
-                    () -> robotCentric.getAsBoolean(),
-                    1.0
-                )
-            );
-        }));
-        shoulderButtonLeft.onTrue(new InstantCommand(() -> {
-            s_Swerve.setDefaultCommand(
-                new TeleopSwerve(
-                    s_Swerve, 
-                    () -> -driver.getRawAxis(translationAxis)*1, 
-                    () -> -driver.getRawAxis(strafeAxis)*1, 
-                    () -> -driver.getRawAxis(rotationAxis)*1, 
-                    () -> robotCentric.getAsBoolean(),
-                    0.25
-                )
-            );
-        }));*/
+      
     }
 
     /**P
